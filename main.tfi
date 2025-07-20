@@ -1,0 +1,5 @@
+bahubali("Hello, world!");
+rrr x = 10;
+pushpa y = 5;
+bahubali("The value of x is", x);
+bahubali(x + y);

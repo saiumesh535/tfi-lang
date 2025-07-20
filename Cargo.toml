@@ -1,0 +1,26 @@
+[package]
+name = "tfi-lang"
+version = "1.0.0"
+edition = "2024"
+description = "A Telugu Film Industry inspired programming language"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+repository = "https://github.com/yourusername/tfi-lang"
+keywords = ["programming-language", "compiler", "telugu", "javascript"]
+categories = ["development-tools"]
+
+[lib]
+name = "tfi_lang"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tfi-lang"
+path = "src/main.rs"
+
+[dependencies]
+logos = "0.13"
+pest = "2.7"
+pest_derive = "2.7"
+
+[dev-dependencies]
+criterion = "0.5"

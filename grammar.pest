@@ -1,0 +1,46 @@
+program = { SOI ~ statement* ~ EOI }
+
+statement = { 
+    print_statement |
+    const_statement |
+    let_statement |
+    if_statement |
+    while_statement |
+    for_statement
+}
+
+print_statement = { "bahubali" ~ "(" ~ expression ~ ("," ~ expression)* ~ ")" ~ ";" }
+const_statement = { "rrr" ~ ident ~ "=" ~ expression ~ ";" }
+let_statement = { "pushpa" ~ ident ~ "=" ~ expression ~ ";" }
+
+if_statement = { 
+    "magadheera" ~ "(" ~ expression ~ ")" ~ "{" ~ statement* ~ "}" ~ 
+    else_block?
+}
+
+else_block = { "karthikeya" ~ "{" ~ statement* ~ "}" }
+
+while_statement = { "pokiri" ~ "(" ~ expression ~ ")" ~ "{" ~ statement* ~ "}" }
+
+for_statement = { 
+    "eega" ~ "(" ~ statement ~ expression ~ ";" ~ expression ~ ")" ~ 
+    "{" ~ statement* ~ "}" 
+}
+
+operator = { "+" | "-" | "*" | "/" | ">" | "<" | ">=" | "<=" | "==" | "!=" }
+expression = { term ~ (operator ~ term)* }
+
+term = { 
+    number | 
+    ident | 
+    string |
+    "(" ~ expression ~ ")"
+}
+
+string = @{ "\"" ~ (ASCII_ALPHANUMERIC | " " | "!" | "#" | "$" | "%" | "&" | "'" | "(" | ")" | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^" | "_" | "`" | "{" | "|" | "}" | "~")* ~ "\"" }
+
+number = @{ ASCII_DIGIT+ }
+ident = @{ ASCII_ALPHA+ }
+
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+COMMENT = _{ "//" ~ (!"\n" ~ ANY)* ~ ("\n" | EOI) }
